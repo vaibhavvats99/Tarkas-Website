@@ -1,6 +1,6 @@
 {
   "name": "tarkas-website",
-  "version": "1.0.0",
+  "version": 2,
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,34 +10,40 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@react-three/drei": "^9.88.17",
+    "@react-three/fiber": "^8.15.19",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "typescript": "^5.2.2",
-    "tailwindcss": "^3.3.5",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "framer-motion": "^10.16.5",
-    "@react-three/fiber": "^8.15.19",
-    "@react-three/drei": "^9.88.17",
-    "three": "^0.160.0",
     "@types/three": "^0.160.0",
-    "lucide-react": "^0.292.0",
+    "autoprefixer": "^10.4.16",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.292.0",
+    "next": "14.0.3",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss": "^3.3.5",
+    "three": "^0.160.0",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
+    "@nestjs/cli": "^11.0.10",
     "eslint": "^8.53.0",
     "eslint-config-next": "14.0.3"
   },
-  "version": 2,
   "builds": [
-    { "src": "dist/main.js", "use": "@vercel/node" }
+    {
+      "src": "dist/main.js",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "dist/main.js" }
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
   ]
 }
