@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "nest build",
-    "start": "node dist/main",
+    "build": "next build",
+    "start": "next start",
     "start:prod": "node dist/main",
     "lint": "next lint"
   },
