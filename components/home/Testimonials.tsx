@@ -11,7 +11,7 @@ const Testimonials = () => {
       company: 'TekyCorp',
       content: 'These wire protectors are exactly what we needed for our office. Easy to install and they look professional. Highly recommend!',
       rating: 5,
-      avatar: '👩‍💼',
+      avatar: '👨‍💻',
     },
     {
       name: 'Vaibhav',
@@ -27,7 +27,7 @@ const Testimonials = () => {
       company: 'RetailMax',
       content: 'We use these throughout our retail locations. Durable, safe, and they maintain the clean look of our spaces.',
       rating: 5,
-      avatar: '👩‍🔧',
+      avatar: '👨‍💻',
     },
   ]
 
