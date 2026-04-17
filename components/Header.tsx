@@ -38,7 +38,7 @@ const Header = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
+          ? 'bg-white/95 dark:bg-slate-950/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -48,7 +48,7 @@ const Header = () => {
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl lg:text-3xl font-bold gradient-text"
+              className="text-2xl lg:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white gradient-text"
             >
               Tarkas
             </motion.div>
@@ -109,7 +109,7 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
+              className="md:hidden bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (

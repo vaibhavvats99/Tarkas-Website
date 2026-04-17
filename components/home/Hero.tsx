@@ -7,17 +7,17 @@ import FloatingProduct from '@/components/3d/FloatingProduct'
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(255,153,0)_1px,transparent_0)] bg-[size:40px_40px]"></div>
+      <div className="absolute inset-0 opacity-6 dark:opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(15,118,110,0.15)_1px,transparent_0)] bg-[size:50px_50px]"></div>
       </div>
 
       {/* Floating Shapes */}
       <motion.div
         animate={{
-          x: [0, 100, 0],
-          y: [0, -100, 0],
+          x: [0, 80, 0],
+          y: [0, -80, 0],
           rotate: [0, 180, 360],
         }}
         transition={{
@@ -25,12 +25,12 @@ const Hero = () => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute top-20 left-10 w-20 h-20 bg-accent/10 rounded-full blur-xl"
+        className="absolute top-20 left-10 w-20 h-20 bg-accent/15 rounded-full blur-2xl"
       />
       <motion.div
         animate={{
-          x: [0, -120, 0],
-          y: [0, 120, 0],
+          x: [0, -100, 0],
+          y: [0, 100, 0],
           rotate: [0, -180, -360],
         }}
         transition={{
@@ -38,7 +38,7 @@ const Hero = () => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute bottom-20 right-10 w-32 h-32 bg-primary-300/20 rounded-full blur-xl"
+        className="absolute bottom-20 right-10 w-32 h-32 bg-primary-300/15 rounded-full blur-2xl"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
