@@ -6,7 +6,7 @@ import { Star, Quote } from 'lucide-react'
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Indervir',
+      name: 'Shubham',
       role: 'Office Manager',
       company: 'TekyCorp',
       content: 'These wire protectors are exactly what we needed for our office. Easy to install and they look professional. Highly recommend!',
@@ -14,7 +14,7 @@ const Testimonials = () => {
       avatar: '👨‍💻',
     },
     {
-      name: 'Vaibhav',
+      name: 'Dikshu',
       role: 'Student',
       company: 'NST',
       content: 'Perfect for our events. They protect our equipment cables and prevent tripping hazards. Quality is outstanding.',
@@ -22,7 +22,7 @@ const Testimonials = () => {
       avatar: '👨‍💻',
     },
     {
-      name: 'Deepanshu',
+      name: 'Bhomik',
       role: 'Facility Manager',
       company: 'RetailMax',
       content: 'We use these throughout our retail locations. Durable, safe, and they maintain the clean look of our spaces.',
