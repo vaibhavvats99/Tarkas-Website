@@ -72,16 +72,15 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Link href="/product">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <span>Shop Now</span>
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </motion.button>
-              </Link>
+              <a
+                href="https://amzn.in/d/08qb8xTd"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-amber-500 px-8 py-4 text-base font-semibold text-white shadow-[0_18px_40px_rgba(249,115,22,0.24)] transition hover:bg-amber-400"
+              >
+                Shop Now
+                <ArrowRight size={18} className="ml-3" />
+              </a>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}

@@ -31,6 +31,16 @@ const Testimonials = () => {
     },
   ]
 
+  const reviews = [
+    {
+      name: "Deepak",
+      role: "Office Manager",
+      icon: "👨🏻‍💻",
+      verified: true,
+      comment: "Clean professional look...",
+    },
+  ]
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

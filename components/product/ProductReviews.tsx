@@ -47,7 +47,7 @@ const ProductReviews = () => {
       verified: true,
       content: 'Clean professional look that doesn\'t detract from our office aesthetics. Easy to remove and reposition when we need to change our setup. Highly recommend!',
       helpful: 22,
-      avatar: '👩‍💼',
+      avatar: '👨🏻‍💻',
     }
   ]
 
