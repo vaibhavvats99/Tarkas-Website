@@ -28,17 +28,14 @@ const ProductShowcase = () => {
             className="relative"
           >
             <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl">
-              {/* Placeholder for product image */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-2xl flex items-center justify-center overflow-hidden">
-                <div className="text-center space-y-4">
-                  <div className="w-32 h-8 bg-gray-800 dark:bg-gray-300 rounded-lg mx-auto relative">
-                    <div className="absolute top-1 left-2 right-2 h-2 bg-accent rounded-sm"></div>
-                    <div className="absolute top-4 left-2 right-2 h-2 bg-accent rounded-sm"></div>
-                  </div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">
-                    Tarkas Floor Wire Protector
-                  </p>
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600">
+                <Image
+                  src="/product%20images/IMG20250131192310-Photoroom.jpg"
+                  alt="Tarkas Floor Wire Protector"
+                  fill
+                  priority={false}
+                  className="object-contain p-6"
+                />
               </div>
               
               {/* Floating badges */}

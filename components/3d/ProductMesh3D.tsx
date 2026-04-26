@@ -16,7 +16,7 @@ const ProductMesh3D = () => {
         transition={{ duration: 3, repeat: Infinity }}
       >
         <Image
-          src="/61hACD4D8sL.jpg"
+          src="/transparent-Photoroom%20(3).png"
           alt="Product"
           width={500}
           height={500}

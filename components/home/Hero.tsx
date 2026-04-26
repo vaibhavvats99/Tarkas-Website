@@ -127,7 +127,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 right-10 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg glass"
+              className="absolute right-0 top-0 z-20 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg glass lg:right-2 lg:top-6"
             >
               <div className="text-sm font-semibold text-gray-700 dark:text-gray-300">Premium Quality</div>
               <div className="text-xs text-gray-500 dark:text-gray-400">Durable & Safe</div>
