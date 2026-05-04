@@ -8,22 +8,31 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tarkasindia.in'),
+  metadataBase: new URL('https://www.tarkasindia.in'),
   title: 'Tarkas - Premium Floor Wire Protectors',
   description: 'Protect Your Wires, Protect Your Space. Premium quality floor wire protectors for safe and organized cable management.',
   keywords: 'floor wire protector, cable management, wire protection, safety, Tarkas',
   authors: [{ name: 'Tarkas' }],
   creator: 'Tarkas',
   publisher: 'Tarkas',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
-    icon: '/file_00000000166862438e3863dca6ea2cf7.png',
-    shortcut: '/file_00000000166862438e3863dca6ea2cf7.png',
-    apple: '/file_00000000166862438e3863dca6ea2cf7.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-48x48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/icon.png', type: 'image/png', sizes: '1024x1024' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180' },
+    ],
   },
   openGraph: {
     title: 'Tarkas - Premium Floor Wire Protectors',
     description: 'Protect Your Wires, Protect Your Space. Premium quality floor wire protectors for safe and organized cable management.',
-    url: 'https://tarkasindia.in',
+    url: '/',
     siteName: 'Tarkas',
     locale: 'en_US',
     type: 'website',

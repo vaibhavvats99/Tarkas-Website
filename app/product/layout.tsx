@@ -4,16 +4,19 @@ export const metadata: Metadata = {
   title: 'Premium Floor Wire Protector - Tarkas',
   description: 'Heavy-duty floor wire protectors designed for maximum cable protection and safety. Easy installation, durable construction, and professional appearance.',
   keywords: 'floor wire protector, cable protection, wire management, safety equipment, heavy duty, professional grade',
+  alternates: {
+    canonical: '/product',
+  },
   openGraph: {
     title: 'Premium Floor Wire Protector - Tarkas',
     description: 'Heavy-duty floor wire protectors designed for maximum cable protection and safety. Easy installation, durable construction, and professional appearance.',
-    url: 'https://tarkasindia.in/product',
+    url: '/product',
     siteName: 'Tarkas',
     images: [
       {
-        url: '/api/placeholder/1200/630',
-        width: 1200,
-        height: 630,
+        url: '/file_00000000166862438e3863dca6ea2cf7.png',
+        width: 1024,
+        height: 1024,
         alt: 'Tarkas Premium Floor Wire Protector',
       },
     ],
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Premium Floor Wire Protector - Tarkas',
     description: 'Heavy-duty floor wire protectors designed for maximum cable protection and safety.',
-    images: ['/api/placeholder/1200/630'],
+    images: ['/file_00000000166862438e3863dca6ea2cf7.png'],
   },
 }
 
