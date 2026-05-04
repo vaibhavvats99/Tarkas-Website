@@ -3,16 +3,27 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Star, Heart, Share2, ShoppingCart, Truck, Shield, RotateCcw, Check } from 'lucide-react'
+import { productVariants, type ProductColor, type ProductVariant } from '@/components/product/productData'
 
-const ProductInfo = () => {
+type ProductInfoProps = {
+  selectedVariant: ProductVariant
+  selectedColor: ProductColor
+  selectedVariantId: string
+  selectedColorId: string
+  onVariantChange: (variantId: string) => void
+  onColorChange: (colorId: string) => void
+}
+
+const ProductInfo = ({
+  selectedVariant,
+  selectedColor,
+  selectedVariantId,
+  selectedColorId,
+  onVariantChange,
+  onColorChange,
+}: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1)
-  const [selectedVariant, setSelectedVariant] = useState('standard')
   const [isFavorited, setIsFavorited] = useState(false)
-
-  const variants = [
-    { id: 'standard', name: 'Standard (3ft)', price: 599, originalPrice: 899 },
-    { id: 'heavy-duty', name: 'Heavy Duty (3ft)', price: 1299, originalPrice: 1799 },
-  ]
 
   const features = [
     { icon: Shield, text: 'Premium Protection' },
@@ -21,21 +32,15 @@ const ProductInfo = () => {
     { icon: Check, text: 'Slip-Resistant' },
   ]
 
-  const currentVariant = variants.find(v => v.id === selectedVariant) || variants[0]
-  const savings = currentVariant.originalPrice - currentVariant.price
-  const savingsPercent = Math.round((savings / currentVariant.originalPrice) * 100)
+  const savings = selectedVariant.originalPrice - selectedVariant.price
+  const savingsPercent = Math.round((savings / selectedVariant.originalPrice) * 100)
 
   const updateQuantity = (change: number) => {
     setQuantity(prev => Math.max(1, prev + change))
   }
 
   return (
-    <a
-      href="https://amzn.in/d/04gCn5rM"
-      target="_blank"
-      rel="noreferrer"
-      className="product-info"
-    >
+    <div className="product-info">
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -55,6 +60,8 @@ const ProductInfo = () => {
               </span>
               <button
                 onClick={() => setIsFavorited(!isFavorited)}
+                type="button"
+                aria-label={isFavorited ? 'Remove from wishlist' : 'Add to wishlist'}
                 className={`p-2 rounded-full transition-colors ${
                   isFavorited 
                     ? 'bg-red-100 text-red-500' 
@@ -88,10 +95,10 @@ const ProductInfo = () => {
           >
             <div className="flex items-baseline space-x-4">
               <span className="text-4xl font-bold text-gray-900 dark:text-white">
-                Rs{currentVariant.price}
+                Rs{selectedVariant.price}
               </span>
               <span className="text-xl text-gray-500 dark:text-gray-400 line-through">
-                Rs{currentVariant.originalPrice}
+                Rs{selectedVariant.originalPrice}
               </span>
               <span className="inline-block px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-semibold rounded-full">
                 Save {savingsPercent}%
@@ -128,12 +135,13 @@ const ProductInfo = () => {
             Choose Variant
           </h3>
           <div className="grid grid-cols-1 gap-3">
-            {variants.map((variant) => (
+            {productVariants.map((variant) => (
               <button
                 key={variant.id}
-                onClick={() => setSelectedVariant(variant.id)}
+                type="button"
+                onClick={() => onVariantChange(variant.id)}
                 className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  selectedVariant === variant.id
+                  selectedVariantId === variant.id
                     ? 'border-accent bg-accent/5'
                     : 'border-gray-200 dark:border-gray-700 hover:border-accent/50'
                 }`}
@@ -147,7 +155,7 @@ const ProductInfo = () => {
                       Rs{variant.price} (was Rs{variant.originalPrice})
                     </div>
                   </div>
-                  {selectedVariant === variant.id && (
+                  {selectedVariantId === variant.id && (
                     <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                       <Check className="w-4 h-4 text-white" />
                     </div>
@@ -158,11 +166,48 @@ const ProductInfo = () => {
           </div>
         </motion.div>
 
-        {/* Quantity & Add to Cart */}
+        {/* Color Selection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
+          className="space-y-4"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Choose Color
+            </h3>
+            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              {selectedColor.name}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {selectedVariant.colors.map((color) => (
+              <button
+                key={color.id}
+                type="button"
+                onClick={() => onColorChange(color.id)}
+                className={`flex min-h-[84px] flex-col items-center justify-center gap-2 rounded-xl border-2 px-3 py-3 text-sm font-semibold transition-all ${
+                  selectedColorId === color.id
+                    ? 'border-accent bg-accent/5 text-accent shadow-sm'
+                    : 'border-gray-200 text-gray-700 hover:border-accent/50 dark:border-gray-700 dark:text-gray-300'
+                }`}
+              >
+                <span
+                  className="h-8 w-8 rounded-full border border-gray-300 shadow-inner dark:border-gray-600"
+                  style={{ background: color.swatch }}
+                />
+                <span className="text-center leading-tight">{color.name}</span>
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Quantity & Add to Cart */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="space-y-6"
         >
           <div className="flex items-center space-x-4">
@@ -171,6 +216,7 @@ const ProductInfo = () => {
             </span>
             <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg">
               <button
+                type="button"
                 onClick={() => updateQuantity(-1)}
                 className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -178,6 +224,7 @@ const ProductInfo = () => {
               </button>
               <span className="px-4 py-2 font-semibold">{quantity}</span>
               <button
+                type="button"
                 onClick={() => updateQuantity(1)}
                 className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -188,21 +235,25 @@ const ProductInfo = () => {
 
           <div className="space-y-3">
             <motion.button
+              type="button"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-accent hover:bg-accent/90 text-white py-4 rounded-xl font-semibold text-lg flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <ShoppingCart size={20} />
-              <span>Add to Cart - Rs {(currentVariant.price * quantity).toFixed(2)}</span>
+              <span>Add to Cart - Rs {(selectedVariant.price * quantity).toFixed(2)}</span>
             </motion.button>
             
-            <motion.button
+            <motion.a
+              href={selectedColor.amazonUrl}
+              target="_blank"
+              rel="noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300"
+              className="block w-full border-2 border-accent text-accent hover:bg-accent hover:text-white py-4 rounded-xl font-semibold text-lg text-center transition-all duration-300"
             >
               Buy Now
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
 
@@ -231,12 +282,12 @@ const ProductInfo = () => {
           className="flex items-center space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700"
         >
           <span className="text-gray-600 dark:text-gray-400">Share:</span>
-          <button className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <button type="button" className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
             <Share2 size={18} />
           </button>
         </motion.div>
       </motion.div>
-    </a>
+    </div>
   )
 }
 

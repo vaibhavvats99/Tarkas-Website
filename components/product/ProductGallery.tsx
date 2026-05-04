@@ -1,47 +1,32 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Maximize2, RotateCcw } from 'lucide-react'
 import { Canvas } from '@react-three/fiber'
 import ProductMesh3D from '@/components/3d/ProductMesh3D'
+import type { ProductColor, ProductVariant } from '@/components/product/productData'
 
-const ProductGallery = () => {
+type ProductGalleryProps = {
+  selectedVariant: ProductVariant
+  selectedColor: ProductColor
+}
+
+const ProductGallery = ({ selectedVariant, selectedColor }: ProductGalleryProps) => {
   const [currentImage, setCurrentImage] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [view3D, setView3D] = useState(false)
 
-  // Placeholder images - replace with real product images
-  const images = [
-    {
-      id: 1,
-      src: '/product images/main Photoroom-Photoroom (2).png',
-      alt: 'Tarkas Floor Wire Protector - Main View',
-      placeholder: '🔧',
-      color: 'bg-gray-800',
-    },
-    {
-      id: 2,
-      src: '/product images/Complete Packaging V2 (3) copy.png',
-      alt: 'Tarkas Floor Wire Protector - Side View',
-      placeholder: '📐',
-      color: 'bg-gray-700',
-    },
-    {
-      id: 3,
-      src: '/product images/IMG20250131192310-Photoroom.jpg',
-      alt: 'Tarkas Floor Wire Protector - Installation',
-      placeholder: '⚙️',
-      color: 'bg-gray-600',
-    },
-    {
-      id: 4,
-      src: '/product images/Zoom In Image (3).png',
-      alt: 'Tarkas Floor Wire Protector - In Use',
-      placeholder: '✅',
-      color: 'bg-gray-500',
-    },
-  ]
+  const images = selectedColor.images.map((src, index) => ({
+    id: `${selectedVariant.id}-${selectedColor.id}-${index}`,
+    src,
+    alt: `Tarkas ${selectedVariant.name} ${selectedColor.name} - image ${index + 1}`,
+  }))
+
+  useEffect(() => {
+    setCurrentImage(0)
+    setView3D(false)
+  }, [selectedVariant.id, selectedColor.id])
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length)
@@ -78,15 +63,15 @@ const ProductGallery = () => {
             </motion.div>
           ) : (
             <motion.div
-              key={`image-${currentImage}`}
+              key={`${selectedVariant.id}-${selectedColor.id}-${currentImage}`}
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className={`w-full h-full flex items-center justify-center ${images[currentImage].color}`}
+              className="w-full h-full flex items-center justify-center bg-slate-900"
             >
               <img
-                src={images[currentImage].src}
-                alt={images[currentImage].alt}
+                src={images[currentImage]?.src}
+                alt={images[currentImage]?.alt}
                 className="max-w-full max-h-full object-contain mx-auto"
               />
             </motion.div>
@@ -173,7 +158,7 @@ const ProductGallery = () => {
                 : 'border-gray-200 dark:border-gray-700 hover:border-accent/50'
             }`}
           >
-            <div className={`w-full h-full flex items-center justify-center ${image.color}`}>
+            <div className="w-full h-full flex items-center justify-center bg-slate-900">
               <img
                 src={image.src}
                 alt={image.alt}
@@ -216,10 +201,10 @@ const ProductGallery = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal content */}
-              <div className={`w-full h-full flex items-center justify-center ${images[currentImage].color}`}>
+              <div className="w-full h-full flex items-center justify-center bg-slate-900">
                 <img
-                  src={images[currentImage].src}
-                  alt={images[currentImage].alt}
+                  src={images[currentImage]?.src}
+                  alt={images[currentImage]?.alt}
                   className="max-w-full max-h-full object-contain mx-auto"
                 />
               </div>

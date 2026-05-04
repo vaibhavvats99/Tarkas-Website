@@ -72,15 +72,13 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <a
-                href="https://amzn.in/d/08qb8xTd"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/product"
                 className="inline-flex items-center justify-center rounded-full bg-amber-500 px-8 py-4 text-base font-semibold text-white shadow-[0_18px_40px_rgba(249,115,22,0.24)] transition hover:bg-amber-400"
               >
                 Shop Now
                 <ArrowRight size={18} className="ml-3" />
-              </a>
+              </Link>
               
               <motion.button
                 whileHover={{ scale: 1.05 }}

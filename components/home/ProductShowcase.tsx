@@ -30,7 +30,7 @@ const ProductShowcase = () => {
             <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600">
                 <Image
-                  src="/product%20images/IMG20250131192310-Photoroom.jpg"
+                  src="/product%20images/Heavy-Duty/Yellow%2BBlack/IMG20250131192310-Photoroom.jpg"
                   alt="Tarkas Floor Wire Protector"
                   fill
                   priority={false}
